@@ -1,0 +1,5 @@
+{
+    "bootstrap.servers": "localhost:29092",
+    "group.id": "first_group",
+    "auto.offset.reset": "earliest"
+}
