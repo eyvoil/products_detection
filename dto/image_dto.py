@@ -1,6 +1,3 @@
-import base64
-
-
 class ImageDTO:
     def __init__(self, id_img, img_base64):
         self.id_img = id_img

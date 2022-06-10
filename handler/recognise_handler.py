@@ -45,23 +45,11 @@ class RecogniseHandler(IRecogniseHandler):
                 continue
 
             return self.parse_msg(msg)
-            # self.trace_response(msg)
-            # self.parse_msg(self.msg_str)
 
-    # def parse_msg(self, msg):
-    #     data = json.loads(msg)
-    #     id_img = data["_id"]
-    #     img_base64 = data["Image_Base64"]
-    #     image_64_decode = base64.b64decode(img_base64)
-    #     image_result = open('img.jpg', 'wb')  # create a writable image and write the decoding result
-    #     image_result.write(image_64_decode)
-    #     print("_id " + id_img + " Image_Base64 " + img_base64)
-    #     return id_img, img_base64
-    #
-
+    #TODO передать дату
     def parse_msg(self, msg):
         msg_str = msg.value().decode('utf-8')
         data = json.loads(msg_str)
-        image_dto = ImageDTO(data["_id"], data["Image_Base64"])
+        image_dto = ImageDTO(data["Image_ID"], data["Image_Base64"])
         request_dto = RequestDTO(image_dto, None)
         return request_dto
