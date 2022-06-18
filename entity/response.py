@@ -1,9 +1,8 @@
 from sqlalchemy import Column, DateTime, Integer
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
-from database import engine
-
-Base = declarative_base()
+from database import Base
+from entity.response_product import ResponseProduct
 
 
 class Response(Base):
@@ -11,9 +10,7 @@ class Response(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     response_date = Column(DateTime)
+    id_product = relationship("Product", secondary="response_product", backref="response")
 
     def __repr__(self):
-        return "<Response %r, %r>" % self.id, self.request_date
-
-
-Base.metadata.create_all(engine)
+        return f"<Response {self.id}, {self.response_date}>"

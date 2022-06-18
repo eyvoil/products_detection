@@ -1,9 +1,6 @@
 from sqlalchemy import Column, Integer, Text
-from sqlalchemy.ext.declarative import declarative_base
 
-from database import engine
-
-Base = declarative_base()
+from database import Base
 
 
 class Model(Base):
@@ -14,7 +11,4 @@ class Model(Base):
     path = Column(Text)
 
     def __repr__(self):
-        return "<Model %r, %r, %r>" % self.id, self.name, self.path
-
-
-Base.metadata.create_all(engine)
+        return f"<Model {self.id}, {self.name}, {self.path}>"

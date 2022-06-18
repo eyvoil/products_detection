@@ -1,9 +1,6 @@
 from sqlalchemy import Column, Text, Integer, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
 
-from database import engine
-
-Base = declarative_base()
+from database import Base
 
 
 class Record(Base):
@@ -16,7 +13,4 @@ class Record(Base):
     id_model = Column(Integer, ForeignKey("model.id"))
 
     def __repr__(self):
-        return "<Logs %r, %r, %r, %r, %r>" % self.id, self.stack_trace, self.id_request, self.id_response, self.id_model
-
-
-Base.metadata.create_all(engine)
+        return f"<Logs {self.id}, {self.id_response}, {self.id_request}, {self.id_model}, {self.stack_trace}>"

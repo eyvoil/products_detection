@@ -6,12 +6,12 @@ from mapper.i_mapper import IMapper
 
 
 class ResponseMapper(IMapper):
-    def __init__(self):
-        pass
+    def __init__(self, response_dto: ResponseDTO):
+        self.response_dto = response_dto
+
     #TODO дописать
-    def map_to_entity(self, response_dto: ResponseDTO):
-        response = Response(response_date=response_dto.get_date())
-        # model = Model(name=model_dto.get_name() , path=model_dto.get_model_path())
+    def map_to_entity(self):
+        response = Response(response_date=self.response_dto.get_date())
 
         return response
 

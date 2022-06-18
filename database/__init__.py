@@ -1,1 +1,1 @@
-from .connect import engine, session
+from .connect import engine, session, Base

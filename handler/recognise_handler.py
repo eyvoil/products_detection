@@ -1,4 +1,5 @@
 import json
+import datetime
 
 from confluent_kafka import Consumer
 
@@ -51,5 +52,5 @@ class RecogniseHandler(IRecogniseHandler):
         msg_str = msg.value().decode('utf-8')
         data = json.loads(msg_str)
         image_dto = ImageDTO(data["Image_ID"], data["Image_Base64"])
-        request_dto = RequestDTO(image_dto, None)
+        request_dto = RequestDTO(image_dto, datetime.datetime.now())
         return request_dto
